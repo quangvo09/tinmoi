@@ -7,5 +7,8 @@ node_modules/
 # typescript build output
 dist
 
+# testing
+converage
+
 # macOS files
 .DS_Store
