@@ -7,6 +7,7 @@ const Index = () => {
  return (
    <>
     <Head title={'Index Page'} />
+    <h1>Hello World</h1>
    </>
  );
 }
