@@ -8,7 +8,7 @@ node_modules/
 dist
 
 # testing
-converage
+/converage
 
 # macOS files
 .DS_Store
