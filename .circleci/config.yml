@@ -1,10 +1,16 @@
+defaults: &defaults
+  docker:
+      - image: circleci/node:8
+    working_directory: ~/tmp/circlci-now
+
 version: 2
 jobs:
   unit-test:
-    docker:
-      - image: circleci/node:8
+    <<: *defaults
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/tmp/circlci-now
       - restore_cache: # special step to restore the dependency cache
           key: dependency-cache-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
       - run:
@@ -16,9 +22,10 @@ jobs:
             - ./node_modules
       - run: npm run test # run tests
   deploy:
-    docker:
-      - image: circleci/node:8
+    <<: *defaults
     steps:
+      - attach_workspace:
+          at: ~/tmp/circlci-now
       - run:
           name: Install Now CLI
           command: sudo npm install --global --unsafe-perm now
