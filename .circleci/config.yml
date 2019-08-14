@@ -24,6 +24,9 @@ jobs:
   deploy:
     <<: *defaults
     steps:
+      - persist_to_workspace:
+          root: .
+          paths: .
       - attach_workspace:
           at: ~/tmp/circlci-now
       - run:
