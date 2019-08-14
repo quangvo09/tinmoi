@@ -31,10 +31,6 @@ jobs:
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
                 now --token $ZEIT_TOKEN --local-config .now/now.staging.json
                 now --token $ZEIT_TOKEN --local-config .now/now.staging.json alias
-            else
-                ./.now/now.feature.sh
-                now --token $ZEIT_TOKEN --local-config .now/now.feature.json
-                now --token $ZEIT_TOKEN --local-config .now/now.feature.json alias
             fi
 workflows:
   version: 2

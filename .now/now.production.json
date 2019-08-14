@@ -1,3 +1,5 @@
 {
-  "name": "tinmoi"
+  "name": "tinmoi-production",
+  "type": "npm",
+  "forwardNpm": true
 }
