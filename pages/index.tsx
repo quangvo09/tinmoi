@@ -1,7 +1,7 @@
 import * as React from "react";
 import Head from '../components/head';
 
-import "../../index.scss";
+import "../index.scss";
 
 const Index = () => {
  return (
