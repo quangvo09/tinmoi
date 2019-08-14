@@ -20,6 +20,9 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
+      - persist_to_workspace:
+          root: .
+          paths: .
       - run: npm run test # run tests
   deploy:
     <<: *defaults
@@ -33,11 +36,11 @@ jobs:
           name: Deploy & Alias
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                now --token $ZEIT_TOKEN --local-config .now/now.production.json
-                now --token $ZEIT_TOKEN --local-config .now/now.production.json alias
+                now --token $ZEIT_TOKEN --local-config ./.now/now.production.json
+                now --token $ZEIT_TOKEN --local-config ./.now/now.production.json alias
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-                now --token $ZEIT_TOKEN --local-config .now/now.staging.json
-                now --token $ZEIT_TOKEN --local-config .now/now.staging.json alias
+                now --token $ZEIT_TOKEN --local-config ./.now/now.staging.json
+                now --token $ZEIT_TOKEN --local-config ./.now/now.staging.json alias
             fi
 workflows:
   version: 2
