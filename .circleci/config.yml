@@ -1,7 +1,7 @@
 defaults: &defaults
   docker:
       - image: circleci/node:8
-    working_directory: ~/tmp/circlci-now
+  working_directory: ~/tmp/circlci-now
 
 version: 2
 jobs:
