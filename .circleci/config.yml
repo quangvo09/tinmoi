@@ -19,7 +19,7 @@ jobs:
     docker:
       - image: circleci/node:8
     steps:
-       - run:
+      - run:
           name: Install Now CLI
           command: sudo npm install --global --unsafe-perm now
       - deploy:
@@ -38,10 +38,10 @@ jobs:
             fi
 workflows:
   version: 2
-    build_and_test:
-      jobs:
-        - unit-test
-        - deploy
+  build_and_test:
+    jobs:
+      - unit-test
+      - deploy:
           requires:
             - unit-test
           filters:
